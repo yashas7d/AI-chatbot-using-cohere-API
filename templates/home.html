@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Cohere App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <h1>ChatBot</h1>
+
+    <form method="post" action="{{ url_for('home') }}">
+        {{ form.hidden_tag() }}
+        <label for="text">Enter text to search:</label>
+        {{ form.text(size=40) }}
+        {{ form.submit() }}
+    </form>
+
+    {% if output %}
+        <div class="output-container">
+            <h2>Generated Output:</h2>
+            <p>{{ output }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
